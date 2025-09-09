@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>活动展示 - 流动照片墙</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <img src="logo.png" alt="扬赋人工智能协会logo" class="logo">
+                <h1>扬赋人工智能协会</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">协会简介</a></li>
+                    <li><a href="features.html">协会特色</a></li>
+                    <li><a href="gallery.html" class="current">活动展示</a></li>
+                    <li><a href="enterprise-cooperation.html">校企合作</a></li>
+                    <li><a href="contact.html">联系方式</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- 流动照片墙部分 -->
+        <section id="gallery" class="gallery-section">
+            <div class="container">
+                <h2>活动展示 - 流动照片墙</h2>
+                <div class="gallery-intro">
+                    <p>这里展示了协会举办的各类精彩活动照片，记录了我们共同成长的美好瞬间。滚动浏览，感受协会的活力与氛围！</p>
+                </div>
+                
+                <!-- 流动照片墙容器 -->
+                <div class="photo-gallery" id="photoGallery">
+                    <!-- 照片将通过JavaScript动态生成 -->
+                    <div class="loading-message">照片加载中...</div>
+                </div>
+                
+                <script>
+                    // 所有照片文件列表
+                    const photoFiles = [
+                        '1b915901afac7c5bbb3fe4a443ba492c.jpg',
+                        'cf3388b51ef1036da78a614a98c68f6c.jpg',
+                        '微信图片_20250908084503_870_423.jpg',
+                        '微信图片_20250908084505_871_423.jpg',
+                        '微信图片_20250908084507_872_423.jpg',
+                        '微信图片_20250908084508_873_423.jpg',
+                        '微信图片_20250908084606_874_423.jpg',
+                        '微信图片_20250908084610_878_423.jpg',
+                        '微信图片_20250908084611_879_423.jpg',
+                        '微信图片_20250908084612_880_423.jpg',
+                        '微信图片_20250908084614_882_423.jpg',
+                        '微信图片_20250908084615_883_423.jpg',
+                        '微信图片_20250908084617_884_423.jpg',
+                        '微信图片_20250908084905_889_423.jpg',
+                        '微信图片_20250908084907_890_423.jpg',
+                        '微信图片_20250908084911_892_423.jpg',
+                        '微信图片_20250908085107_893_423.jpg',
+                        '微信图片_20250908091708_894_423.jpg',
+                        '微信图片_20250908091928_895_423.jpg',
+                        '微信图片_20250908091930_896_423.jpg',
+                        '微信图片_20250908091938_899_423.jpg',
+                        '微信图片_20250908091939_901_423.jpg',
+                        '微信图片_20250908091940_902_423.jpg',
+                        '微信图片_20250908091941_903_423.jpg',
+                        '微信图片_20250908091942_904_423.jpg',
+                        '微信图片_20250908091943_905_423.jpg',
+                        '微信图片_20250908091945_907_423.jpg',
+                        '微信图片_20250908091949_910_423.jpg',
+                        '微信图片_20250908091952_911_423.jpg',
+                        '微信图片_20250908092252_913_423.jpg',
+                        '微信图片_20250908092515_916_423.jpg',
+                        '微信图片_20250908092913_922_423.jpg',
+                        '微信图片_20250908093310_924_423.jpg',
+                        '微信图片_20250908093312_925_423.jpg',
+                        '微信图片_20250908093319_928_423.jpg',
+                        '微信图片_20250908093321_929_423.jpg',
+                        '微信图片_20250908093323_930_423.jpg',
+                        '微信图片_20250908093327_932_423.jpg',
+                        '微信图片_20250908093330_933_423.jpg',
+                        '微信图片_20250908093332_934_423.jpg',
+                        '微信图片_20250908093339_937_423.jpg',
+                        '微信图片_20250908093340_938_423.jpg',
+                        '微信图片_20250908093341_939_423.jpg',
+                        '微信图片_20250908093343_941_423.jpg',
+                        '微信图片_20250908093347_942_423.jpg',
+                        '微信图片_20250908093350_944_423.jpg',
+                        '微信图片_20250908093358_948_423.jpg',
+                        '微信图片_20250908093359_949_423.jpg',
+                        '微信图片_20250908093401_951_423.jpg',
+                        '微信图片_20250908093403_953_423.jpg',
+                        '微信图片_20250908093405_955_423.jpg',
+                        '微信图片_20250908093409_959_423.jpg',
+                        '微信图片_20250908093410_961_423.jpg',
+                        '微信图片_20250908093412_963_423.jpg',
+                        '微信图片_20250908093414_965_423.jpg',
+                        '微信图片_20250908093601_972_423.jpg',
+                        '微信图片_20250908093606_975_423.jpg',
+                        '微信图片_20250908093616_977_423.jpg',
+                        '微信图片_20250908093618_978_423.jpg',
+                        '微信图片_20250908093619_979_423.jpg',
+                        '微信图片_20250908093620_980_423.jpg',
+                        '微信图片_20250908093627_981_423.jpg',
+                        '微信图片_20250908094537_984_423.jpg',
+                        '微信图片_20250908094551_990_423.jpg',
+                        '微信图片_20250908094558_993_423.jpg',
+                        '微信图片_20250908094616_1000_423.jpg',
+                        '微信图片_20250908094937_1015_423.jpg',
+                        '微信图片_20250908095020_1019_423.jpg',
+                        '微信图片_20250908095031_1022_423.jpg',
+                        '微信图片_20250908095143_1026_423.jpg',
+                        '微信图片_20250908095344_1028_423.jpg',
+                        '微信图片_20250908095821_1042_423.jpg',
+                        '微信图片_20250908095823_1044_423.jpg',
+                        '微信图片_20250908095929_1047_423.jpg'
+                    ];
+                    
+                    // 活动照片标题列表
+                    const photoCaptions = [
+                        '会员交流会', 'AI技术分享会', '编程大赛现场', '工作坊互动', '项目展示环节',
+                        '导师指导', '团队协作', '成果发布会', '技术研讨', '招新宣讲', '会员团建', '学术讲座',
+                        '活动瞬间', '精彩回顾', '团队合影', '研讨会现场', '嘉宾演讲',
+                        '实践活动', '比赛现场', '分享交流', '项目讨论', '学习小组',
+                        '会员活动', '技术沙龙', '行业讲座', '经验分享', '团建活动',
+                        '成果展示', '学员作品', '专家指导', '互动环节', '知识竞赛'
+                    ];
+                    
+                    // 随机打乱数组的函数
+                    function shuffleArray(array) {
+                        for (let i = array.length - 1; i > 0; i--) {
+                            const j = Math.floor(Math.random() * (i + 1));
+                            [array[i], array[j]] = [array[j], array[i]]; // 交换元素
+                        }
+                        return array;
+                    }
+                    
+                    // 生成随机标题
+                    function getRandomCaption() {
+                        const randomIndex = Math.floor(Math.random() * photoCaptions.length);
+                        return photoCaptions[randomIndex];
+                    }
+                    
+                    // 生成照片墙
+                    function generatePhotoGallery() {
+                        const galleryContainer = document.getElementById('photoGallery');
+                        galleryContainer.innerHTML = ''; // 清空容器
+                        
+                        // 随机打乱图片顺序
+                        const shuffledPhotos = shuffleArray([...photoFiles]);
+                        
+                        // 为每张图片创建HTML元素
+                        shuffledPhotos.forEach((photoFile, index) => {
+                            const photoItem = document.createElement('div');
+                            photoItem.className = 'photo-item';
+                            photoItem.style.opacity = '0';
+                            photoItem.style.transform = 'translateY(20px)';
+                            photoItem.style.transition = `opacity 0.5s ease ${index * 0.05}s, transform 0.5s ease ${index * 0.05}s`;
+                            
+                            const img = document.createElement('img');
+                            img.src = `photo/${photoFile}`;
+                            img.alt = '协会活动照片';
+                            img.className = 'photo-img';
+                            
+                            const caption = document.createElement('p');
+                            caption.className = 'photo-caption';
+                            caption.textContent = getRandomCaption();
+                            
+                            photoItem.appendChild(img);
+                            photoItem.appendChild(caption);
+                            galleryContainer.appendChild(photoItem);
+                            
+                            // 图片加载后显示
+                            img.onload = function() {
+                                setTimeout(() => {
+                                    photoItem.style.opacity = '1';
+                                    photoItem.style.transform = 'translateY(0)';
+                                }, 100);
+                            };
+                            
+                            // 图片加载失败时的处理
+                            img.onerror = function() {
+                                console.log(`无法加载图片: ${photoFile}`);
+                                photoItem.style.display = 'none';
+                            };
+                        });
+                    }
+                    
+                    // 页面加载完成后生成照片墙
+                    document.addEventListener('DOMContentLoaded', generatePhotoGallery);
+                </script>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 扬赋人工智能协会 版权所有</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
